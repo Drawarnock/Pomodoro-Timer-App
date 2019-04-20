@@ -1,0 +1,55 @@
+.button {
+  display: block;
+  border: none;
+  font-size: 28px;
+  padding: 10px 50px;
+  margin-bottom: 40px;
+  width: 420px;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 5px 10px 15px 0px rgba(35, 35, 35, 0.4);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  text-align: left;
+}
+
+.button__gplus {
+  background-color: #dd4c39;
+}
+
+.button__gplus:hover {
+  background-color: #cc3b28;
+}
+
+.button__fb {
+  background-color: #4267b2;
+}
+
+.button__fb:hover {
+  background-color: #3156a1;
+}
+
+.button__lin {
+  background-color: #0077b5;
+}
+
+.button__lin:hover {
+  background-color: #005593;
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px 0 0;
+}
+
+.icon-container::after {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 1px;
+  height: 35px;
+  background-color: #dedede;
+  top: -2px;
+  left: 80%;
+}

@@ -1,0 +1,26 @@
+.Navigation {
+  width: 80%;
+  background-color: #dedede;
+}
+
+.Navigation__list {
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.Navigation__item--right {
+  margin-left: auto;
+}
+
+.Navigation__link:link,
+.Navigation__link:visited {
+  text-decoration: none;
+  padding: 15px 30px;
+  display: inline-block;
+  color: #121212;
+}
+
+.Navigation__link:hover {
+  background-color: #cdcdcd;
+}

@@ -1,0 +1,28 @@
+.LoginForm {
+  margin-top: 30px;
+}
+
+.LoginForm__group {
+  margin-bottom: 20px;
+}
+
+.LoginForm__input {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 24px;
+  margin-left: auto;
+  border: none;
+  border-bottom: 2px solid #dedede;
+  background-color: transparent;
+  outline: none;
+  transition: 0.2s;
+}
+
+.LoginForm__label {
+  font-size: 24px;
+  color: white;
+}
+
+.LoginForm__input:focus {
+  border-bottom: 2px solid #aaaaaa;
+}
