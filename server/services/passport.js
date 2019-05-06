@@ -29,13 +29,13 @@ passport.use(
       });
       if (existingUser) {
         console.log('User exists');
-       cb(null, existingUser);
+        cb(null, existingUser);
       } else {
         const user = await new User({
           providerUserId: profile.id,
           provider: profile.provider
         }).save();
-       cb(null, user);
+        cb(null, user);
       }
     }
   )
@@ -49,7 +49,7 @@ passport.use(
       callbackURL: '/auth/facebook/callback'
     },
     async (accessToken, refreshToken, profile, cb) => {
-
+      console.log(accessToken, refreshToken, profile, cb);
       const existingUser = await User.findOne({
         providerUserId: profile.id,
         provider: profile.provider
@@ -57,13 +57,13 @@ passport.use(
 
       if (existingUser) {
         console.log('User exists');
-       cb(null, existingUser);
+        cb(null, existingUser);
       } else {
         const user = await new User({
           providerUserId: profile.id,
           provider: profile.provider
         }).save();
-       cb(null, user);
+        cb(null, user);
       }
     }
   )

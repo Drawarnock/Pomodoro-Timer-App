@@ -12,7 +12,7 @@ router.get(
 router.get(
   '/auth/facebook',
   passport.authenticate('facebook', {
-    scope: ['profile', 'email']
+    scope: ['public_profile', 'email']
   })
 );
 
