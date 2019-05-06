@@ -1,5 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const User = require('../models/User');
@@ -20,8 +22,33 @@ passport.use(
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback'
     },
-    async (accessToken, refreshToken, profile, done) => {
-      //console.log(accessToken, refreshToken, profile, done);
+    async (accessToken, refreshToken, profile, cb) => {
+      const existingUser = await User.findOne({
+        providerUserId: profile.id,
+        provider: profile.provider
+      });
+      if (existingUser) {
+        console.log('User exists');
+       cb(null, existingUser);
+      } else {
+        const user = await new User({
+          providerUserId: profile.id,
+          provider: profile.provider
+        }).save();
+       cb(null, user);
+      }
+    }
+  )
+);
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookClientID,
+      clientSecret: keys.facebookClientSecret,
+      callbackURL: '/auth/facebook/callback'
+    },
+    async (accessToken, refreshToken, profile, cb) => {
 
       const existingUser = await User.findOne({
         providerUserId: profile.id,
@@ -30,13 +57,40 @@ passport.use(
 
       if (existingUser) {
         console.log('User exists');
-        done(null, existingUser);
+       cb(null, existingUser);
       } else {
         const user = await new User({
           providerUserId: profile.id,
           provider: profile.provider
         }).save();
-        done(null, user);
+       cb(null, user);
+      }
+    }
+  )
+);
+
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: keys.twitterClientID,
+      consumerSecret: keys.twitterClientSecret,
+      callbackURL: '/auth/twitter/callback'
+    },
+    async (token, tokenSecret, profile, cb) => {
+      const existingUser = await User.findOne({
+        providerUserId: profile.id,
+        provider: profile.provider
+      });
+
+      if (existingUser) {
+        console.log('User exists');
+        cb(null, existingUser);
+      } else {
+        const user = await new User({
+          providerUserId: profile.id,
+          provider: profile.provider
+        }).save();
+        cb(null, user);
       }
     }
   )
