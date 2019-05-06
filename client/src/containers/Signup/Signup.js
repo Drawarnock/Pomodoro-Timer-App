@@ -7,23 +7,23 @@ class Signup extends Component {
   render() {
     return (
       <div className='Signup'>
-        <Button
+        <Button tag='anchor' href="/auth/google"
           icon='icon ion-logo-google'
           addClasses={['button__gplus'].join(' ')}
         >
           Sign In with Google
         </Button>
-        <Button
+        <Button tag='anchor' href="/auth/facebook"
           icon='icon ion-logo-facebook'
           addClasses={['button__fb'].join(' ')}
         >
           Sign In with Facebook
         </Button>
-        <Button
-          icon='icon ion-logo-linkedin'
-          addClasses={['button__lin'].join(' ')}
+        <Button tag='anchor'
+          icon='icon ion-logo-twitter'
+          addClasses={['button__twitter'].join(' ')}
         >
-          Sign In with Linkedin
+          Sign In with Twitter
         </Button>
 
         <span className='Signup__or'> OR </span>
